@@ -20,66 +20,56 @@
     <script>
         // Create random number between 0 and 2
         let getComputerChoice = () => Math.floor(Math.random() * 3);
-        let computerSelection = getComputerChoice();
 
 
         let playerNumber;
         // Checks if player input is valid and converts to number value
-        function checkInput (e) {
-            console.log(this.classlist.value);
-            if (playerSelection == "rock" || playerSelection == "paper"|| playerSelection == "scissors") {
-                switch(playerSelection) {
-            case "PAPER": 
-                playerNumber = 0;
-                break;
-            case "ROCK": 
-                playerNumber = 1;
-                break;
-            case "SCISSORS":
-                playerNumber = 2;
-                break;
-       }
-            }
-        }
-    
+
         //Initializing variables of ties, wins, losses
         let T = 0;
         let W = 0;
         let L = 0;
 
         // Plays a logical game of rock paper scissors.
-        function playGame(a, b) {
+        function playGame(a, b, e) {
+            playerSelection = this.classList.value;
+            console.log(playerSelection);
+                switch(playerSelection) {
+            case "paper": 
+                playerNumber = 0;
+                break;
+            case "rock": 
+                playerNumber = 1;
+                console.log(playerNumber);
+                break;
+            case "scissors":
+                playerNumber = 2;
+            }
+            a = playerNumber;
+            b = getComputerChoice();
             if(a == b) {
                 T = T + 1;
                 return "Tie";
             }
             else if((a+1 == b) || (a-2 == b)) {
                 W = W + 1;
+                console.log("W");
                 return "Winner";
             }
             else {
                 L = L + 1;
+                console.log("L");
                 return "Loser";
             }
         }
 
-        //Loop to play 5 games
-        //function extendedGame() {
-            //for (let i = 0; i < 5; i++) {
-               // let playerSelection = playerPrompt();
-              //  computerSelection = getComputerChoice();
-                //checkInput(playerSelection);
-               // let result = playGame(playerNumber, computerSelection)
-               // console.log(result);
-               // console.log(`"Wins: ${W}, Losses: ${L}, Ties: ${T}`)
-          //  }
-//
-       // }
-       // extendedGame();
 
+                function tryThis (e) {
+                    console.log(this.classList.value);
+                }
                 const options = document.querySelectorAll('button');
                 options.forEach((button) => {
-                    button.addEventListener('click', playGame(checkInput(), computerSelection))
+                    button.addEventListener('click', playGame)
                 });
 
 
