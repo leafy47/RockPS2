@@ -6,22 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    Nothing here! Check the console.
+    <button class="rock">Rock</button>
+    <button class="paper">Paper</button>
+    <button class="scissors">Scissors</button>
+
+
+
+
+
+
+
+
     <script>
         // Create random number between 0 and 2
         let getComputerChoice = () => Math.floor(Math.random() * 3);
         let computerSelection = getComputerChoice();
 
-        //Prompts player for value
-        function playerPrompt () {
-            a = prompt("Choose Rock, Paper, or Scissors to play.", "Rock - Paper - Scissors");
-            return a.toUpperCase();
-        }
 
         let playerNumber;
         // Checks if player input is valid and converts to number value
-        function checkInput (playerSelection) {
-            if (playerSelection == "ROCK" || playerSelection == "PAPER"|| playerSelection == "SCISSORS") {
+        function checkInput (e) {
+            console.log(this.classlist.value);
+            if (playerSelection == "rock" || playerSelection == "paper"|| playerSelection == "scissors") {
                 switch(playerSelection) {
             case "PAPER": 
                 playerNumber = 0;
@@ -33,11 +39,6 @@
                 playerNumber = 2;
                 break;
        }
-            }
-            else {
-                playerSelection = prompt("Invalid Choice. Choose Rock, Paper, or Scissors", "Input choice here");
-                playerSelection = playerSelection.toUpperCase();
-                checkInput(playerSelection);
             }
         }
     
@@ -63,18 +64,24 @@
         }
 
         //Loop to play 5 games
-        function extendedGame() {
-            for (let i = 0; i < 5; i++) {
-                let playerSelection = playerPrompt();
-                computerSelection = getComputerChoice();
-                checkInput(playerSelection);
-                let result = playGame(playerNumber, computerSelection)
-                console.log(result);
-                console.log(`"Wins: ${W}, Losses: ${L}, Ties: ${T}`)
-            }
+        //function extendedGame() {
+            //for (let i = 0; i < 5; i++) {
+               // let playerSelection = playerPrompt();
+              //  computerSelection = getComputerChoice();
+                //checkInput(playerSelection);
+               // let result = playGame(playerNumber, computerSelection)
+               // console.log(result);
+               // console.log(`"Wins: ${W}, Losses: ${L}, Ties: ${T}`)
+          //  }
+//
+       // }
+       // extendedGame();
 
-        }
-        extendedGame();
+                const options = document.querySelectorAll('button');
+                options.forEach((button) => {
+                    button.addEventListener('click', playGame(checkInput(), computerSelection))
+                });
+
 
     </script>
 </body>
