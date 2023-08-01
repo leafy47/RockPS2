@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
 
+    <h1>Rock, Paper, Scissors!</h1>
+    <div class="results">
+        <div class="winlose">
+            
+        </div>
+        <div class="keepscore">
+            <span>Wins: <span class="wins">0</span><span>Losses: </span><span class="losses">0</span><span>Ties: <span class="ties">0</span>
+        </div>
+    </div>
+
+    <div class="buttonlay">
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
+    </div>
 
 
 
@@ -30,17 +43,20 @@
         let W = 0;
         let L = 0;
 
+        const result = document.querySelector('.winlose');
+        const losses = document.querySelector('.losses');
+        const wins = document.querySelector('.wins');
+        const ties = document.querySelector('.ties');
+
         // Plays a logical game of rock paper scissors.
         function playGame(a, b, e) {
             playerSelection = this.classList.value;
-            console.log(playerSelection);
                 switch(playerSelection) {
             case "paper": 
                 playerNumber = 0;
                 break;
             case "rock": 
                 playerNumber = 1;
-                console.log(playerNumber);
                 break;
             case "scissors":
                 playerNumber = 2;
@@ -49,24 +65,22 @@
             b = getComputerChoice();
             if(a == b) {
                 T = T + 1;
-                return "Tie";
+                result.textContent = "Tie";
+                ties.textContent = T;
             }
             else if((a+1 == b) || (a-2 == b)) {
                 W = W + 1;
-                console.log("W");
-                return "Winner";
+                result.textContent = "Win";
+                wins.textContent = W;
             }
             else {
                 L = L + 1;
-                console.log("L");
-                return "Loser";
+                result.textContent = "Loss";
+                losses.textContent = L;
             }
         }
 
 
-                function tryThis (e) {
-                    console.log(this.classList.value);
-                }
                 const options = document.querySelectorAll('button');
                 options.forEach((button) => {
                     button.addEventListener('click', playGame)
