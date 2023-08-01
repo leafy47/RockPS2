@@ -11,7 +11,7 @@
     <h1>Rock, Paper, Scissors!</h1>
     <div class="results">
         <div class="winlose">
-            
+            Ready
         </div>
         <div class="keepscore">
             <span>Wins: <span class="wins">0</span><span>Losses: </span><span class="losses">0</span><span>Ties: <span class="ties">0</span>
@@ -78,8 +78,34 @@
                 result.textContent = "Loss";
                 losses.textContent = L;
             }
+            checkWinner();
         }
 
+            function checkWinner () {
+                if (T == 5) {
+                    alert("You Tied!");
+                    reset();
+                }
+                else if (L == 5) {
+                    alert("You Lost!");
+                    reset();
+                }
+                else if (W == 5) {
+                    alert("You Won!");
+                    reset();
+                }
+                }
+
+                function reset () {
+                    T = 0;
+                    L = 0;
+                    W = 0;
+                    wins.textContent = W;
+                    losses.textContent = L;
+                    ties.textContent = T;
+                    result.textContent = "Go Again!";
+                }
+            
 
                 const options = document.querySelectorAll('button');
                 options.forEach((button) => {

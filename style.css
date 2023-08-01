@@ -17,8 +17,13 @@ h1 {
     gap: 20px;
 }
 
+span {
+    margin-left: 5px;
+    font-size: 20px;
+}
+
 .winlose {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .buttonlay {
